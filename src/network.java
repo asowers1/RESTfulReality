@@ -82,9 +82,4 @@ public class network {
         System.out.println(response.toString());
 
     }
-    public static void main(String[] args) throws Exception{
-        //PushRESTAPI api = new PushRESTAPI();
-        System.out.println("test");
-        //api.getAllListings();
-    }
 }
