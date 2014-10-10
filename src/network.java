@@ -15,7 +15,7 @@ public class network {
     private final String USER_AGENT = "Mozilla/5.0";
 
     // HTTP GET request
-    public void sendGet(String url) throws Exception{
+    public String sendGet(String url) throws Exception{
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -41,8 +41,9 @@ public class network {
         in.close();
 
         //print result
-        System.out.println(response.toString());
-        JSONObject json = new JSONObject();
+        //System.out.println(response.toString());
+        //JSONObject json = new JSONObject();
+        return response.toString();
     }
 
     // HTTP POST request

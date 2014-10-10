@@ -14,17 +14,21 @@ public class PushRESTAPI {
 
     }
 
-    public void getAllListings()throws Exception{
-
+    public JSONArray getAllListings()throws Exception{
+        String getData = null;
         try {
-            data.sendGet("http://experiencepush.com/csp_portal/rest/`?PUSH_ID=123&call=getAllListings");
+            getData = data.sendGet("http://experiencepush.com/csp_portal/rest/?PUSH_ID=123&call=getAllListings");
         } catch(IOException ioe){
+
             System.out.println("I/O error occured: "+ioe);
         }
+        JSONArray JSON = new JSONArray(getData);
+
+        return  JSON;
     }
 
    public static void main(String[] args) throws Exception{
        PushRESTAPI api = new PushRESTAPI();
-       api.getAllListings();
+       System.out.println(api.getAllListings());
    }
 }
