@@ -40,22 +40,21 @@ public class network {
         }
         in.close();
 
-        //print result
-        //System.out.println(response.toString());
-        //JSONObject json = new JSONObject();
         return response.toString();
     }
 
     // HTTP POST request
-    public void sendPost(String url, String urlParameters) throws Exception {
+    public String sendPost(String url, String urlParameters) throws Exception {
 
         URL obj = new URL(url);
-        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
         //add reuqest header
         con.setRequestMethod("POST");
         con.setRequestProperty("User-Agent", USER_AGENT);
         con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+
+        //String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
 
         // Send post request
         con.setDoOutput(true);
@@ -79,8 +78,7 @@ public class network {
         }
         in.close();
 
-        //print result
-        System.out.println(response.toString());
+        return response.toString();
 
     }
 }
