@@ -49,12 +49,22 @@ public class PushRESTAPI {
         return postData;
     }
 
+    public String removeUserFavorite(String uuid, String favorite_id)throws  Exception{
+        String postData = null;
+        try{
+            postData = data.sendPost("http://experiencepush.com/csp_portal/rest/","PUSH_ID=123&uuid="+uuid+"&favorite_id="+favorite_id+"&call=removeUserFavorite");
+        }catch(IOException ioe){
+            System.out.println("I/O error occured: "+ioe);
+        }
+        return postData;
+    }
 
    public static void main(String[] args) throws Exception{
        PushRESTAPI api = new PushRESTAPI();
        //System.out.println(api.getAllListings());
        //System.out.println(api.getUserFavorites("901292DF-C96A-4F19-AF3A-5A1893C41DF3"));
-       System.out.println(api.addUserFavorite("901292DF-C96A-4F19-AF3A-5A1893C41DF3","85087"));
+       //System.out.println(api.addUserFavorite("901292DF-C96A-4F19-AF3A-5A1893C41DF3","85087"));
+       System.out.println(api.removeUserFavorite("901292DF-C96A-4F19-AF3A-5A1893C41DF3","85087"));
 
    }
 }
