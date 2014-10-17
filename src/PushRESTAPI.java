@@ -69,12 +69,23 @@ public class PushRESTAPI {
         return postData;
     }
 
+    public JSONArray getCampaignHasBeacon()throws Exception {
+        String getData = null;
+        try{
+            getData = data.sendGet("http://experiencepush.com/csp_portal/rest/index.php?PUSH_ID=123&call=getCampaignHasBeacon");
+        }catch(IOException ioe){
+            System.out.println("I/O error occurred: "+ioe);
+        }
+        return new JSONArray(getData);
+    }
+
    public static void main(String[] args) throws Exception{
        PushRESTAPI api = new PushRESTAPI();
        //System.out.println(api.getAllListings());
        //System.out.println(api.getUserFavorites("901292DF-C96A-4F19-AF3A-5A1893C41DF3"));
        //System.out.println(api.addUserFavorite("901292DF-C96A-4F19-AF3A-5A1893C41DF3","85087"));
        //System.out.println(api.removeUserFavorite("901292DF-C96A-4F19-AF3A-5A1893C41DF3","85087"));
-       System.out.println(api.addNewAnonUser("6E96D72B-850C-419A-B1AD-4FE08F40210E"));
+       //System.out.println(api.addNewAnonUser("6E96D72B-850C-419A-B1AD-4FE08F40210E"));
+       System.out.println(api.getCampaignHasBeacon());
    }
 }
