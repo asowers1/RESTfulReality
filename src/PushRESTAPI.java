@@ -54,7 +54,17 @@ public class PushRESTAPI {
         try{
             postData = data.sendPost("http://experiencepush.com/csp_portal/rest/","PUSH_ID=123&uuid="+uuid+"&favorite_id="+favorite_id+"&call=removeUserFavorite");
         }catch(IOException ioe){
-            System.out.println("I/O error occured: "+ioe);
+            System.out.println("I/O error occurred: "+ioe);
+        }
+        return postData;
+    }
+
+    public String addNewAnonUser(String uuid)throws Exception{
+        String postData = null;
+        try{
+            postData = data.sendPost("http://experiencepush.com/csp_portal/rest/index.php","call=addNewAnonUser&PUSH_ID=123&uuid="+uuid);
+        }catch(IOException ioe){
+            System.out.println("I/O error occurred: "+ioe);
         }
         return postData;
     }
@@ -64,7 +74,7 @@ public class PushRESTAPI {
        //System.out.println(api.getAllListings());
        //System.out.println(api.getUserFavorites("901292DF-C96A-4F19-AF3A-5A1893C41DF3"));
        //System.out.println(api.addUserFavorite("901292DF-C96A-4F19-AF3A-5A1893C41DF3","85087"));
-       System.out.println(api.removeUserFavorite("901292DF-C96A-4F19-AF3A-5A1893C41DF3","85087"));
-
+       //System.out.println(api.removeUserFavorite("901292DF-C96A-4F19-AF3A-5A1893C41DF3","85087"));
+       System.out.println(api.addNewAnonUser("6E96D72B-850C-419A-B1AD-4FE08F40210E"));
    }
 }
